@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Extension</title>
+    <link href="popup.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <i class="fas fa-check-circle icon"></i>
+                <h1>To-Do List</h1>
+            </div>
+            <div class="header-right">
+                <button id="theme-toggle" class="icon-button">
+                    <i class="fas fa-moon" id="moon-icon"></i>
+                    <i class="fas fa-sun" id="sun-icon" style="display: none;"></i>
+                </button>
+                <button id="stats-btn" class="icon-button">
+                    <i class="fas fa-chart-pie"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Add Task Form -->
+        <div class="add-task">
+            <div class="input-group">
+                <input type="text" id="task-input" placeholder="Add a new task...">
+                <button id="add-task-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="task-options">
+                <div class="options-left">
+                    <select id="priority-select">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <input type="date" id="due-date">
+                </div>
+                <button id="clear-completed">Clear Completed</button>
+            </div>
+        </div>
+        
+        <!-- Task Filters -->
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="today">Today</button>
+        </div>
+        
+        <!-- Task List -->
+        <div id="task-list" class="task-list">
+            <!-- Tasks will be added here dynamically -->
+        </div>
+        
+        <!-- Task Stats -->
+        <div class="footer">
+            <span id="task-count">0 tasks</span>
+            <button id="clear-all">Clear All</button>
+        </div>
+    </div>
+
+    <!-- Stats Modal -->
+    <div id="stats-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Task Statistics</h3>
+                <button id="close-stats" class="close-button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span>Total Tasks</span>
+                        <span id="total-tasks" class="stat-value">0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="total-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span>Completed</span>
+                        <span id="completed-tasks" class="stat-value">0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="completed-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-header">
+                        <span>Pending</span>
+                        <span id="pending-tasks" class="stat-value">0</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="pending-bar" class="progress-fill"></div>
+                    </div>
+                </div>
+                <div class="additional-stats">
+                    <div class="stat-row">
+                        <span>High Priority</span>
+                        <span id="high-priority" class="stat-value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Due Today</span>
+                        <span id="due-today" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
